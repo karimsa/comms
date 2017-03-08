@@ -5,7 +5,7 @@
  * Copyright (C) 2017 Karim Alibhai.
  */
 
-const Parser = require('../lib/parser')
+const Parser = require('../../lib/parser')
 const expect = require('expect')
 
 const compress = module.exports = (map, val) => {
