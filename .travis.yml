@@ -3,4 +3,4 @@ node_js:
  - 7.7
 script:
  - npm test && node_modules/.bin/codecov
- - MAX_OBJECTS=100000 npm run benchmark
+ - MAX_OBJECTS=10000 npm run benchmark
