@@ -6,4 +6,4 @@
  */
 
 module.exports = require('./lib/server')
-module.exports.client = require('./lib/client')
+module.exports.connect = require('./lib/client')
