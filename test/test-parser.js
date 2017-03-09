@@ -6,9 +6,28 @@
  */
 
 const expect = require('expect')
+const Parser = require('../lib/parser')
 const compress = require('./utils/compress')
 
 describe('Parser#compress & Parser#decompress', () => {
+  it('should fail on invalid type', () => {
+    expect(() => {
+      new Parser({ test: 'not-a-type' })
+    }).toThrow(/invalid type/i)
+  })
+
+  it('should fail on non-string type', () => {
+    expect(() => {
+      new Parser({ test: 0 })
+    }).toThrow(/invalid/i)
+  })
+
+  it('should error out on decompress of non-buffer', () => {
+    expect(() => {
+      new Parser({ test: 'string' }).decompress(null)
+    }).toThrow(/buffer/)
+  })
+
   describe('type strings', () => {
     it('should compress a simple string', () =>
       compress(
