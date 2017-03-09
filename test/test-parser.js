@@ -162,4 +162,25 @@ describe('Parser#compress & Parser#decompress', () => {
       })
     }
   })
+
+  describe('Date type', () => {
+    it('should compress random date object', () =>
+      compress(
+        { test: 'Date' },
+        { test: new Date((Date.now() * Math.random())|0) }
+      )
+    )
+
+    for (let value of [
+      null, undefined, '', 0, {}, []
+    ]) {
+      it('should fail to compress ' + JSON.stringify(value), () => {
+        compress.fail(
+          { test: 'Date' },
+          { test: value },
+          /expected Date/
+        )
+      })
+    }
+  })
 })
