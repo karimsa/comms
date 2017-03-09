@@ -22,7 +22,15 @@ the following requirements in mind:
 
 **Server:**
 ```javascript
-const server = require('comms')()
+const server = require('comms')({
+  key: fs.readFileSync(__dirname + '/keys/alice.key'),
+
+  // you must define your clients by name and provide a buffer
+  // containing the client's public ECDH key
+  clients: {
+    bob: fs.readFileSync(__dirname + '/keys/bob.pub')
+  }
+})
 
 server.model('message', { message: 'string' })
 server.on('message', ({ message }) => console.log('Received: %j', message)))
@@ -32,7 +40,11 @@ server.listen(8080, () => console.log('okay im ready'))
 
 **Client:**
 ```javascript
-const client = require('comms').client(8080, 'localhost')
+const client = require('comms').connect('localhost:8080', {
+  user: 'bob',
+  key: fs.readFileSync(__dirname + '/keys/bob.key'),
+  server_key: fs.readFileSync(__dirname + '/keys/alice.pub')
+})
 client.on('ready', () => client.emit('message', { message: 'Hello, world' }))
 ```
 
@@ -44,11 +56,21 @@ You can then use it in a way similar to `socket.io`. There are two moving parts:
 the server and the client. Servers must declare models they use for communication
 (which are statically typed) and then define routes that respond to those models.
 
+They must also define their potentional clients by name and public key. The name is used
+for a key lookup and the public key is used along with the server's private key to generate
+a secret using the ECDH algorithm. The secret is then used to encrypt all data using
+the given cipher or aes-128-ctr by default (on linux - otherwise rc4-40 is used on macOS).
+
 For instance, to receive a single string called `superCoolMessage` in a model called message,
 you would declare the model like so:
 
 ```javascript
-const server = require('comms')()
+const server = require('comms')({
+  key: fs.readFileSync(__dirname + '/keys/alice.key'),
+  clients: {
+    bob: fs.readFileSync(__dirname + '/keys/bob.pub')
+  }
+})
 
 server.model('message', { superCoolMessage: 'string' })
 ```
@@ -78,7 +100,12 @@ server.listen(8080, () => console.log('k im listening @ port 8080'))
 On the client side, simply initiate a connection and emit events:
 
 ```javascript
-const client = require('comms').client(8080, 'localhost')
+const client = require('comms').connect('localhost:8080', {
+  user: 'bob',
+  key: fs.readFileSync(__dirname + '/keys/bob.key'),
+  server_key: fs.readFileSync(__dirname + '/keys/alice.pub')
+})
+
 client.on('ready', () =>
   client.emit('message', { superCoolMessage: 'im batman' })
 )
