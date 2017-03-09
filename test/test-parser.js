@@ -60,6 +60,16 @@ describe('Parser#compress & Parser#decompress', () => {
         )
       })
     }
+
+    it('should fail to compress string without EOT', () => {
+      let parser = new Parser({ test: 'string' })
+      let buffer = parser.compress({ test: 'a' })
+      buffer = buffer.slice(0, buffer.length - 1)
+      
+      expect(() =>
+        parser.decompress(buffer)
+      ).toThrow(/end of string/)
+    })
   })
 
   describe('number type', () => {
