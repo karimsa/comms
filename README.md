@@ -1,4 +1,4 @@
-# comms [![Build Status](https://travis-ci.com/karimsa/comms.svg?token=bynzkcTP4XciV8soPs5e&branch=master)](https://travis-ci.com/karimsa/comms)
+# comms [![Build Status](https://travis-ci.com/karimsa/comms.svg?token=bynzkcTP4XciV8soPs5e&branch=master)](https://travis-ci.com/karimsa/comms) [![codecov](https://codecov.io/gh/karimsa/comms/branch/master/graph/badge.svg?token=e8bsOKgTpK)](https://codecov.io/gh/karimsa/comms)
 
 Rapid &amp; secure communications module.
 
