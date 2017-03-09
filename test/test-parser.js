@@ -127,4 +127,39 @@ describe('Parser#compress & Parser#decompress', () => {
       })
     }
   })
+
+  describe('RegEx type', () => {
+    it('should compress /[a-z]/ as RegExp', () =>
+      compress(
+        { test: 'RegExp' },
+        { test: /[a-z]/ }
+      )
+    )
+
+    it('should compress /[a-z]/ as regex', () =>
+      compress(
+        { test: 'regex' },
+        { test: /[a-z]/ }
+      )
+    )
+
+    it('should compress with flags', () =>
+      compress(
+        { test: 'RegExp' },
+        { test: /[a-z]/gi }
+      )
+    )
+
+    for (let value of [
+      null, undefined, '', 0, {}, []
+    ]) {
+      it('should fail to compress ' + JSON.stringify(value), () => {
+        compress.fail(
+          { test: 'RegExp' },
+          { test: value },
+          /expected RegExp/
+        )
+      })
+    }
+  })
 })
