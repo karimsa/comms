@@ -4,7 +4,7 @@
   "description": "Lightweight secure communications over UDP.",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha test/test-all.js -- -R spec",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha test/test-all.js -i 'lib/*.js' --preload-sources -- -R spec",
     "benchmark": "node test/bench/parser.js"
   },
   "repository": {
