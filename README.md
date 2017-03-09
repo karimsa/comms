@@ -4,17 +4,13 @@ Rapid &amp; secure communications module.
 
 ## Motivation
 
-WebSockets are great but for a few projects that were extremly speed
-sensitive, I needed something a bit better. So I created comms with
-the following requirements in mind:
+For some IoT-related projects, you need a very lightweight application
+protocol implemented over UDP. But when you write your application, the
+higher-level API should maintain the advantages of a simple server-client
+architecture (i.e. like how node's net module does).
 
- - Must have an API very similar to WebSockets or the `net` module
- - Must be secure (use encryption, maybe not TLS level)
- - Must use UDP over TCP - data loss is okay.
- - Must compress JSON much further than it typically is (even for really small JSON objects).
-
- comms is a module that solves these needs for me. I hope it is
- of use to you as well.
+comms is a module that solves these needs for me. I hope it is of use to you
+as well.
 
 # TL;DR
 
