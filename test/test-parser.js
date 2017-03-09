@@ -10,16 +10,22 @@ const Parser = require('../lib/parser')
 const compress = require('./utils/compress')
 
 describe('Parser#compress & Parser#decompress', () => {
-  it('should fail on invalid type', () => {
+  it('init should fail on invalid type', () => {
     expect(() => {
       new Parser({ test: 'not-a-type' })
     }).toThrow(/invalid type/i)
   })
 
-  it('should fail on non-string type', () => {
+  it('init should fail on non-string type', () => {
     expect(() => {
       new Parser({ test: 0 })
     }).toThrow(/invalid/i)
+  })
+
+  it('should error out on compress of non-object', () => {
+    expect(() => {
+      new Parser({ test: 'string' }).compress(0)
+    }).toThrow(/object/)
   })
 
   it('should error out on decompress of non-buffer', () => {
