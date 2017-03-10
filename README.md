@@ -2,6 +2,10 @@
 
 Rapid &amp; secure communications module.
 
+*Do not use right now. This module is under development and I will release a stable
+version when the module is well tested and stable. If you find the code interesting,
+I'd love some help. I've opened issues on all the things that need to be done.*
+
 ## Motivation
 
 For some IoT-related projects, you need a very lightweight application
