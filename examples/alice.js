@@ -1,6 +1,6 @@
 const fs = require('fs')
-const comms = require('../')
-const server = comms({
+const fldsmdfr = require('../')
+const server = fldsmdfr({
   key: fs.readFileSync(__dirname + '/keys/alice.key'),
   clients: {
     bob: fs.readFileSync(__dirname + '/keys/bob.pub')

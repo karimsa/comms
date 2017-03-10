@@ -1,7 +1,7 @@
 {
-  "name": "comms",
+  "name": "fldsmdfr",
   "version": "0.0.1",
-  "description": "Lightweight secure communications over UDP.",
+  "description": "Rapid & secure communications module.",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha test/test-all.js -i 'lib/*.js' --preload-sources -- -R spec",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/karimsa/comms.git"
+    "url": "git+https://github.com/karimsa/fldsmdfr.git"
   },
   "author": "Karim Alibhai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/karimsa/comms/issues"
+    "url": "https://github.com/karimsa/fldsmdfr/issues"
   },
-  "homepage": "https://github.com/karimsa/comms#readme",
+  "homepage": "https://github.com/karimsa/fldsmdfr#readme",
   "keywords": [
     "udp",
     "networking",

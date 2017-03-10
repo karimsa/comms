@@ -1,5 +1,5 @@
 /**
- * test/utils/random.js - comms
+ * test/utils/random.js - fldsmdfr
  * 
  * Licensed under MIT license.
  * Copyright (C) 2017 Karim Alibhai.

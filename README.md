@@ -1,4 +1,4 @@
-# comms [![Build Status](https://travis-ci.com/karimsa/comms.svg?token=bynzkcTP4XciV8soPs5e&branch=master)](https://travis-ci.com/karimsa/comms) [![codecov](https://codecov.io/gh/karimsa/comms/branch/master/graph/badge.svg?token=e8bsOKgTpK)](https://codecov.io/gh/karimsa/comms)
+# fldsmdfr [![Build Status](https://travis-ci.com/karimsa/fldsmdfr.svg?token=bynzkcTP4XciV8soPs5e&branch=master)](https://travis-ci.com/karimsa/fldsmdfr) [![codecov](https://codecov.io/gh/karimsa/fldsmdfr/branch/master/graph/badge.svg?token=e8bsOKgTpK)](https://codecov.io/gh/karimsa/fldsmdfr)
 
 Rapid &amp; secure communications module.
 
@@ -13,16 +13,16 @@ protocol implemented over UDP. But when you write your application, the
 higher-level API should maintain the advantages of a simple server-client
 architecture (i.e. like how node's net module does).
 
-comms is a module that solves these needs for me. I hope it is of use to you
+fldsmdfr is a module that solves these needs for me. I hope it is of use to you
 as well.
 
 # TL;DR
 
-**Install:** `npm install --save comms`
+**Install:** `npm install --save fldsmdfr`
 
 **Server:**
 ```javascript
-const server = require('comms')({
+const server = require('fldsmdfr')({
   key: fs.readFileSync(__dirname + '/keys/alice.key'),
 
   // you must define your clients by name and provide a buffer
@@ -40,7 +40,7 @@ server.listen(8080, () => console.log('okay im ready'))
 
 **Client:**
 ```javascript
-const client = require('comms').connect('localhost:8080', {
+const client = require('fldsmdfr').connect('localhost:8080', {
   user: 'bob',
   key: fs.readFileSync(__dirname + '/keys/bob.key'),
   server_key: fs.readFileSync(__dirname + '/keys/alice.pub')
@@ -50,7 +50,7 @@ client.on('ready', () => client.emit('message', { message: 'Hello, world' }))
 
 ## Usage
 
-To install comms, you can use npm like so: `npm install --save comms`.
+To install fldsmdfr, you can use npm like so: `npm install --save fldsmdfr`.
 
 You can then use it in a way similar to `socket.io`. There are two moving parts:
 the server and the client. Servers must declare models they use for communication
@@ -65,7 +65,7 @@ For instance, to receive a single string called `superCoolMessage` in a model ca
 you would declare the model like so:
 
 ```javascript
-const server = require('comms')({
+const server = require('fldsmdfr')({
   key: fs.readFileSync(__dirname + '/keys/alice.key'),
   clients: {
     bob: fs.readFileSync(__dirname + '/keys/bob.pub')
@@ -100,7 +100,7 @@ server.listen(8080, () => console.log('k im listening @ port 8080'))
 On the client side, simply initiate a connection and emit events:
 
 ```javascript
-const client = require('comms').connect('localhost:8080', {
+const client = require('fldsmdfr').connect('localhost:8080', {
   user: 'bob',
   key: fs.readFileSync(__dirname + '/keys/bob.key'),
   server_key: fs.readFileSync(__dirname + '/keys/alice.pub')

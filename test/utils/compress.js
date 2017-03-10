@@ -1,5 +1,5 @@
 /**
- * test/compress.js - comms
+ * test/compress.js - fldsmdfr
  * 
  * Licensed under MIT license.
  * Copyright (C) 2017 Karim Alibhai.

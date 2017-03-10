@@ -1,5 +1,5 @@
 /**
- * test/test-parser-init.js - comms
+ * test/test-parser-init.js - fldsmdfr
  * 
  * Licensed under MIT license.
  * Copyright (C) 2017 Karim Alibhai.

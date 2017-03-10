@@ -1,5 +1,5 @@
 /**
- * index.js - comms
+ * index.js - fldsmdfr
  * 
  * Licensed under MIT license.
  * Copyright (C) 2017 Karim Alibhai.
