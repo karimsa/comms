@@ -9,8 +9,11 @@ const server = comms({
 
 server.on('error', console.log)
 server.model('message', { message: 'string' })
-server.on('message', ({ message }, { address, port }) =>
-  console.log('%s:%s says "%s"', address, port, message)
-)
+
+server.on('connection', (sock, who) => {
+  sock.on('message', ({ message }) => {
+    console.log('%s (from %s:%s) says "%s"', who.user, who.address, who.port, message)
+  })
+})
 
 server.listen(8080, () => console.log('Listening :8080'))
