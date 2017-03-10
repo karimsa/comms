@@ -111,5 +111,6 @@ The server should now print 'im batman' to the console.
 
 ## License
 
-Licensed under MIT license.
+Licensed under [MIT license](LICENSE.md).
+
 Copyright &copy; 2017 Karim Alibhai.
