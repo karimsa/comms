@@ -2,10 +2,6 @@ const Parser = require('../../lib/parser')
 const randomobj = require('../utils/random')
 
 const MAX_OBJECTS = parseInt(process.env.MAX_OBJECTS || '100', 10)
-const bar = new (require('progress'))('  [ :bar ] :percent (:eta)', {
-  total: MAX_OBJECTS,
-  width: 20
-})
 
 /**
  * Tests the time required to compress a JSON object using Parser.
@@ -49,7 +45,6 @@ Promise.all([... new Array(MAX_OBJECTS)].map(async () => {
     testNative(object)
   ])
 
-  bar.tick()
   return args
 })).then(results => {
   console.log('')
