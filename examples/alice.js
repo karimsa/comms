@@ -8,11 +8,15 @@ const server = fldsmdfr({
 })
 
 server.on('error', console.log)
+server.on('invalidRoute', console.log)
+server.on('unauthorizedRequest', console.log)
 server.model('message', { message: 'string' })
 
 server.on('connection', (sock, who) => {
+  sock.on('error', console.log)
   sock.on('message', ({ message }) => {
     console.log('%s (from %s:%s) says "%s"', who.user, who.address, who.port, message)
+    sock.emit('reply', { message: '"' + message + '" to you too' })
   })
 })
 

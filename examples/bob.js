@@ -1,6 +1,6 @@
 const fs = require('fs')
 const fldsmdfr = require('../')
-const sock = fldsmdfr.connect('localhost:8080', {
+const sock = fldsmdfr.createClient('localhost:8080', {
   user: 'bob',
   key: fs.readFileSync(__dirname + '/keys/bob.key'),
   server_key: fs.readFileSync(__dirname + '/keys/alice.pub')
@@ -8,6 +8,11 @@ const sock = fldsmdfr.connect('localhost:8080', {
 
 sock.on('error', console.log)
 
-sock.on('ready', () => {
+sock.model('reply', { message: 'string' })
+sock.on('reply', ({ message }) => {
+  console.log('server says: %j', message)
+})
+
+sock.connect(() => {
   sock.emit('message', { message: 'Hello, world' })
 })
