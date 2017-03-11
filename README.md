@@ -1,4 +1,20 @@
-# fldsmdfr [![Build Status](https://travis-ci.org/karimsa/fldsmdfr.svg?branch=master)](https://travis-ci.org/karimsa/fldsmdfr) [![codecov](https://codecov.io/gh/karimsa/fldsmdfr/branch/master/graph/badge.svg?token=e8bsOKgTpK)](https://codecov.io/gh/karimsa/fldsmdfr)
+<p align="center">
+  <img alt="(pretty picture)" src=".github/preview.png" />
+</p>
+
+<h1 align="center">
+  <a href="https://github.com/karimsa/fldsmdfr">fldsmdfr</a>
+</h1>
+
+<p align="center">
+  <a href="https://travis-ci.org/karimsa/fldsmdfr">
+    <img src="https://travis-ci.org/karimsa/fldsmdfr.svg?branch=master" />
+  </a>
+
+  <a href="https://codecov.io/gh/karimsa/fldsmdfr">
+    <img src="https://codecov.io/gh/karimsa/fldsmdfr/branch/master/graph/badge.svg?token=e8bsOKgTpK" />
+  </a>
+</p>
 
 Rapid &amp; secure communications module.
 
