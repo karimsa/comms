@@ -2,8 +2,8 @@ const fs = require('fs')
 const fldsmdfr = require('../')
 const sock = fldsmdfr.createClient('localhost:8080', {
   user: 'bob',
-  key: fs.readFileSync(__dirname + '/keys/bob.key'),
-  server_key: fs.readFileSync(__dirname + '/keys/alice.pub')
+  key: Buffer.from(fs.readFileSync(__dirname + '/keys/bob.key', 'utf8'), 'base64'),
+  server_key: Buffer.from(fs.readFileSync(__dirname + '/keys/alice.pub', 'utf8'), 'base64')
 })
 
 sock.on('error', console.log)

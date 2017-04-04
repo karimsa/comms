@@ -1,9 +1,9 @@
 const fs = require('fs')
 const fldsmdfr = require('../')
 const server = fldsmdfr({
-  key: fs.readFileSync(__dirname + '/keys/alice.key'),
+  key: Buffer.from(fs.readFileSync(__dirname + '/keys/alice.key', 'utf8'), 'base64'),
   clients: {
-    bob: fs.readFileSync(__dirname + '/keys/bob.pub')
+    bob: Buffer.from(fs.readFileSync(__dirname + '/keys/bob.pub', 'utf8'), 'base64')
   }
 })
 
