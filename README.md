@@ -66,6 +66,9 @@ client.on('ready', () => client.emit('message', { message: 'Hello, world' }))
 
 ## Usage
 
+This is a quick guide to get you up and running as soon as possible, but the
+different topics are more deeply covered through other pages in the [wiki](https://github.com/karimsa/fldsmdfr/wiki/).
+
 To install fldsmdfr, you can use npm like so: `npm install --save fldsmdfr`.
 
 You can then use it in a way similar to `socket.io`. There are two moving parts:
