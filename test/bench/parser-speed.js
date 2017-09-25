@@ -2,18 +2,17 @@ const Benchmark = require('benchmark')
 const compression = new Benchmark.Suite()
 const decompression = new Benchmark.Suite()
 
-const Parser = require('../../lib/parser')
+const BJSON = require('../../')
 const [
   randomMap,
   randomObj
 ] = require('../utils/random')()
-const parser = new Parser(randomMap)
 
-const buffer = parser.compress(randomObj)
+const buffer = BJSON.stringify(randomObj, randomMap)
 const randomObjStr = JSON.stringify(randomObj)
 
-compression.add('Parser#compress', () => {
-  parser.compress(randomObj)
+compression.add('stringify', () => {
+  BJSON.stringify(randomObj, randomMap)
 }).add('JSON#stringify', () => {
   JSON.stringify(randomObj)
 }).on('cycle', function(event) {
@@ -21,8 +20,8 @@ compression.add('Parser#compress', () => {
 }).on('complete', function() {
   console.log('Fastest is ' + this.filter('fastest').map('name'))
 
-  decompression.add('Parser#decompress', () => {
-    parser.decompress(buffer)
+  decompression.add('parse', () => {
+    BJSON.parse(buffer, randomMap)
   }).add('JSON#parse', () => {
     JSON.parse(randomObjStr)
   }).on('cycle', function(event) {

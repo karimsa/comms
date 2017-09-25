@@ -1,4 +1,4 @@
-const Parser = require('../../lib/parser')
+const BJSON = require('../../')
 const randomobj = require('../utils/random')
 
 const MAX_OBJECTS = parseInt(process.env.MAX_OBJECTS || '100', 10)
@@ -10,9 +10,9 @@ const MAX_OBJECTS = parseInt(process.env.MAX_OBJECTS || '100', 10)
  * @param {Object} object the actual object that needs to be compressed
  * @returns {Promise} a promise that returns the time taken to compress and the size after compression
  */
-const testParser = async (parser, object) => {
+const testParser = async (model, object) => {
   const start = Date.now()
-  const buffer = parser.compress(object)
+  const buffer = BJSON.stringify(object, model)
   
   return {
     time: Date.now() - start,
@@ -36,16 +36,13 @@ const testNative = async (object) => {
   }
 }
 
-Promise.all([... new Array(MAX_OBJECTS)].map(async () => {
+Promise.all([... new Array(MAX_OBJECTS)].map(() => {
   const [map, object] = randomobj()
-  const parser = new Parser(map)
 
-  let args = await Promise.all([
-    testParser(parser, object),
+  return Promise.all([
+    testParser(map, object),
     testNative(object)
   ])
-
-  return args
 })).then(results => {
   console.log('')
 

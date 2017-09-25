@@ -5,5 +5,6 @@
  * Copyright (C) 2017 Karim Alibhai.
  */
 
-module.exports = require('./lib/server')
-module.exports.createClient = require('./lib/client')
+exports.Types = require('./lib/types')
+exports.stringify = require('./lib/stringify')
+exports.parse = require('./lib/parse')

@@ -6,8 +6,7 @@
  */
 
 const expect = require('expect')
-const Parser = require('../lib/parser')
-const compress = require('./utils/compress')
+const BJSON = require('../')
 
 describe('Parser#compress & Parser#decompress', () => {
   it('init should fail on invalid type', () => {
